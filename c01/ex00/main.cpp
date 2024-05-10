@@ -9,6 +9,7 @@ int main ()
 	p = newZombie("chansu");
 	randomChump("jooh");
 	p->announce();
+	
 	delete p;
 
 }
