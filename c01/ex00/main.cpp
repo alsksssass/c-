@@ -1,4 +1,4 @@
-#include "Zombi.hpp"
+#include "Zombie.hpp"
 
 int main ()
 {
@@ -7,6 +7,7 @@ int main ()
 	Zombie *p;
 
 	p = newZombie("chansu");
+	two.announce();
 	randomChump("jooh");
 	p->announce();
 	

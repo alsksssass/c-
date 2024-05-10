@@ -3,7 +3,7 @@ CC = c++
 CFLAGS = -Wall -Wextra -Werror
 ADFLAG = -std=c++98
 DFLAG = -MMD -MP
-SRC = main.cpp newZombie.cpp randomChump.cpp Zombi.cpp
+SRC = main.cpp newZombie.cpp randomChump.cpp Zombie.cpp
 OBJ = $(SRC:.cpp=.o)
 DBJ = $(SRC:.cpp=.d)
 
@@ -13,7 +13,7 @@ $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(DFLAG) $(ADFLAG) $(OBJ) -o $(NAME)
 
 %.o: %.cpp
-	$(CC) $(CFLAGS) $(ADFLAG) -c $< -o $@
+	$(CC) $(CFLAGS) $(ADFLAG) $(DFLAG) -c $< -o $@
 
 clean:
 	rm -f $(OBJ) $(DBJ)

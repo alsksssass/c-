@@ -1,5 +1,5 @@
-#ifndef ZOMBI_H
-#define ZOMBI_H
+#ifndef ZOMBIE_H
+#define ZOMBIE_H
 #include <string>
 class Zombie
 {
