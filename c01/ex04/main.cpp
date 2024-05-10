@@ -11,10 +11,11 @@ int main(int argc, char **argv)
 	std::string file_name = argv[1];
 	std::string s1 = argv[2];
 	std::string s2 = argv[3];
-	std::ifstream ofile(file_name);
+	std::ifstream ofile(argv[1]);
 	if(ofile.fail() || s1.empty())
 		return 0;
-	std::ofstream wfile(file_name + ".replace");
+	std::string o_name = file_name + ".replace";
+	std::ofstream wfile(o_name.c_str());
 	if(ofile.fail())
 		return 0;
 	std::stringstream buffer;
