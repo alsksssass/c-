@@ -27,35 +27,3 @@ void Harl::complain(std::string level)
 		}
 	}
 }
-// void Harl::complain(std::string level)
-// {
-// 	std::string cmp_case[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
-// 	int ret = 9;
-// 	for (int i = 0; i < cmp_case->size(); i++)
-// 	{
-// 		int result = cmp_case[i].compare(level);
-// 		if (result == 0)
-// 		{
-// 			ret = i;
-// 			break;
-// 		}
-// 	}
-// 	if (ret < 4)
-// 	{
-// 		switch (ret)
-// 		{
-// 		case 0:
-// 			debug();
-// 			break;
-// 		case 1:
-// 			info();
-// 			break;
-// 		case 2:
-// 			warning();
-// 			break;
-// 		case 3:
-// 			error();
-// 			break;
-// 		}
-// 	}
-// }

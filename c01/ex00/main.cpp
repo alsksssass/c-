@@ -6,10 +6,10 @@ int main ()
 	Zombie two("sabyun");
 	Zombie *p;
 
-	p = newZombie("chansu");
 	two.announce();
-	randomChump("jooh");
+	p = newZombie("chansu");
 	p->announce();
+	randomChump("jooh");
 	
 	delete p;
 

@@ -1,4 +1,4 @@
-NAME = a.out
+NAME = harlFilter
 CC = c++
 CFLAGS = -Wall -Wextra -Werror
 ADFLAG = -std=c++98
@@ -13,7 +13,7 @@ $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(DFLAG) $(ADFLAG) $(OBJ) -o $(NAME)
 
 %.o: %.cpp
-	$(CC) $(CFLAGS) $(ADFLAG) -c $< -o $@
+	$(CC) $(CFLAGS) $(ADFLAG) $(DFLAG) -c $< -o $@
 
 clean:
 	rm -f $(OBJ) $(DBJ)
