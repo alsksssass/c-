@@ -4,7 +4,7 @@ WrongCat::WrongCat() : WrongAnimal(){
 	type = "WrongCat";
 }
 WrongCat::~WrongCat(){}
-WrongCat::WrongCat(const WrongCat &a) {
+WrongCat::WrongCat(const WrongCat &a) : WrongAnimal(a) {
 	type = a.getType();
 }
 WrongCat& WrongCat::operator=(const WrongCat &) {

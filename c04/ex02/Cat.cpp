@@ -9,7 +9,7 @@ Cat::~Cat(){
 	std::cout << "Cat Destruct Call" << std::endl;
 	delete brain;
 }
-Cat::Cat(const Cat &a) {
+Cat::Cat(const Cat &a) : Animal(a) {
 	std::cout << "Cat Copy Construct Call" << std::endl;
 	brain = new Brain(*a.brain);
 	type = a.getType();

@@ -7,7 +7,7 @@ Dog::Dog() : Animal(){
 Dog::~Dog(){
 	std::cout << "Dog Destruct Call" << std::endl;
 }
-Dog::Dog(const Dog &a){
+Dog::Dog(const Dog &a) : Animal(a) {
 	std::cout << "Dog Copy Construct Call" << std::endl;
 	type = a.getType();
 }

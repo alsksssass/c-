@@ -7,7 +7,7 @@ Cat::Cat() : Animal(){
 Cat::~Cat(){
 	std::cout << "Cat Destruct Call" << std::endl;
 }
-Cat::Cat(const Cat &a) {
+Cat::Cat(const Cat &a) : Animal(a) {
 	std::cout << "Cat Copy Construct Call" << std::endl;
 	type = a.getType();
 }
