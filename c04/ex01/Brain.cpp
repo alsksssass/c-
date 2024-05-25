@@ -2,19 +2,28 @@
 
 Brain::Brain(){
 	std::cout << "Brain Construct Call" << std::endl;
-	ideas = new std::string [100];
 }
 Brain::~Brain(){
 	std::cout << "Brain Destruct Call" << std::endl;
-	delete []ideas;
 }
 Brain::Brain(const Brain &a){
 	std::cout << "Brain Copy Construct Call" << std::endl;
-	std::copy(a.ideas->begin(),a.ideas->end()-1,ideas);
+	for(int i = 0; i < 100; i++)
+		ideas[i] = a.ideas[i];
 }
 Brain& Brain::operator=(const Brain &a){
 	std::cout << "Brain assignment operator Call" << std::endl;
 	if(this != &a)
-		std::copy(a.ideas->begin(),a.ideas->end()-1,ideas);
+		for(int i = 0; i < 100; i++)
+			ideas[i] = a.ideas[i];
 	return *this;
+}
+void Brain::setBrain(int idx, const std::string memory)
+{
+	std::cout << "Brain Set Call" << std::endl;
+	ideas[idx] = memory;
+}
+std::string Brain::getBrain(int idx)
+{
+	return ideas[idx];
 }

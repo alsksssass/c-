@@ -1,6 +1,6 @@
 NAME = a.out
 CC = c++
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror 
 ADFLAG = -std=c++98
 DFLAG = -MMD -MP
 SRC = main.cpp Animal.cpp Dog.cpp Cat.cpp Brain.cpp
@@ -19,7 +19,7 @@ clean:
 	rm -f $(OBJ) $(DBJ)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME)ß
 
 re: fclean all
 

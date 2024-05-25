@@ -32,13 +32,12 @@ MateriaSource& MateriaSource::operator=(const MateriaSource &a){
 	return *this;
 }
 AMateria* MateriaSource::createMateria(std::string const & type){
-	AMateria *a = 0;
 	for(int i = 0; i < 4; i++)
 	{
 		if(memory[i]->getType() == type)
-			return a = memory[i]->clone();
+			return memory[i]->clone();
 	}
-	return a;
+	return NULL;
 }
 void MateriaSource::learnMateria(AMateria* a){
 	for(int i = 0; i < 4; i++)

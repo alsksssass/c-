@@ -13,6 +13,8 @@ public:
 	Cat &operator=(const Cat &a);
 	virtual void makeSound() const;
 	virtual std::string getType() const;
+	void giveMemory(int idx, const std::string memory);
+	void getMemory(int idx);
 };
 
 #endif // CAT_HPP

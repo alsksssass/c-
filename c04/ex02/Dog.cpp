@@ -11,18 +11,30 @@ Dog::~Dog(){
 }
 Dog::Dog(const Dog &a){
 	std::cout << "Dog Copy Construct Call" << std::endl;
-	brain = a.brain;
+	brain = new Brain(*a.brain);
 	type = a.getType();
 }
 Dog& Dog::operator=(const Dog &a) {
 	std::cout << "Dog assignment operator Call" << std::endl;
 	if(this != &a)
-		brain = a.brain;
-	return *this;	
+	{
+		delete brain;
+		brain = new Brain(*a.brain);
+		type = a.getType();
+	}
+	return *this;
 }
 void Dog::makeSound() const {
 	std::cout << "bark !" << std::endl;
 }
-std::string Dog::getType() const{
-	return this->type;
+void Dog::giveMemory(int idx, const std::string memory){
+	brain->setBrain(idx,memory);
+}
+
+void Dog::getMemory(int idx){
+	std::cout << brain->getBrain(idx) << std::endl;
+}
+
+std::string Dog::getType() const {
+	return type;
 }

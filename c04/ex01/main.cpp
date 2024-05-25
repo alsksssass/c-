@@ -1,6 +1,6 @@
 #include "Dog.hpp"
 #include "Cat.hpp"
-//void a(){system("leaks a.out");}
+void aa(){system("leaks a.out");}
 int main()
 {
 	Animal *arr [10];
@@ -15,7 +15,17 @@ int main()
 		arr[i]->makeSound();
 	for(int i = 0; i < 10; i++)
 		delete arr[i];
+	Cat *a = new Cat();
+	a->giveMemory(0,"Hello_world!");
+	a->giveMemory(1,"sabyun!");
+	a->getMemory(0);
+	a->getMemory(1);
+	Cat b = *a;
 
-	//std::atexit(a);
+	delete a;
+	b.getMemory(0);
+	b.getMemory(1);
+	b.getMemory(2);
+	std::atexit(aa);
 	return 0;
 }
