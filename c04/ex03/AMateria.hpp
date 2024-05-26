@@ -7,6 +7,9 @@
 
 class AMateria
 {
+private:
+	AMateria();
+	AMateria& operator= (AMateria &a);
 protected:
 	std::string Type;
 public:

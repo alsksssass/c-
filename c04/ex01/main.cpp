@@ -1,6 +1,6 @@
 #include "Dog.hpp"
 #include "Cat.hpp"
-void aa(){system("leaks a.out");}
+// void aa(){system("leaks a.out");}
 int main()
 {
 	Animal *arr [10];
@@ -20,12 +20,14 @@ int main()
 	a->giveMemory(1,"sabyun!");
 	a->getMemory(0);
 	a->getMemory(1);
-	Cat b = *a;
+	Cat b;
+	b = *a;
 
 	delete a;
 	b.getMemory(0);
 	b.getMemory(1);
 	b.getMemory(2);
-	std::atexit(aa);
+	b.getMemory(-1);
+	// std::atexit(aa);
 	return 0;
 }

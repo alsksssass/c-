@@ -28,8 +28,6 @@ Character::Character(const Character &a){
 	Name = a.getName();
 	for(int i = 0; i < 4; i++)
 	{
-		if(Inventory[i] != NULL)
-			delete Inventory[i];
 		if(a.idx[i] == 1)
 			Inventory[i] = a.Inventory[i]->clone();
 		else
@@ -59,6 +57,7 @@ std::string const & Character::getName() const {
 	return this->Name;
 }
 void Character::equip(AMateria* m){
+	if(m == NULL) return;
 	for(int i = 0; i < 4; i++)
 	{
 		if(idx[i] == 0)
@@ -70,13 +69,16 @@ void Character::equip(AMateria* m){
 			return;
 		}
 	}
+	delete m;
 }
 void Character::unequip(int idx){
-	if(Inventory[idx] == NULL)
+	if((idx < 0 || idx > 3 )|| Inventory[idx] == NULL)
 		return;
 	this->idx[idx] = 0;
 }
 void Character::use(int idx, ICharacter& target) {
+	if((idx < 0 || idx > 3 )|| Inventory[idx] == NULL)
+		return;
 	if(this->idx[idx] == 1)
 		Inventory[idx]->use(target);
 }

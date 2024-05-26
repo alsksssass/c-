@@ -20,10 +20,17 @@ Brain& Brain::operator=(const Brain &a){
 }
 void Brain::setBrain(int idx, const std::string memory)
 {
+	if(idx < 0 || idx > 99)
+	{
+		std::cout << "out of range "<< std::endl;
+		return;
+	}
 	std::cout << "Brain Set Call" << std::endl;
 	ideas[idx] = memory;
 }
 std::string Brain::getBrain(int idx)
 {
+	if(idx < 0 || idx > 99)
+		return "no data";
 	return ideas[idx];
 }
