@@ -20,14 +20,17 @@ int main()
 	a->giveMemory(1,"sabyun!");
 	a->getMemory(0);
 	a->getMemory(1);
+	Cat *c = new Cat(*a);
 	Cat b;
 	b = *a;
 
 	delete a;
+	c->getMemory(0);
 	b.getMemory(0);
 	b.getMemory(1);
 	b.getMemory(2);
 	b.getMemory(-1);
+	delete c;
 	// std::atexit(aa);
 	return 0;
 }

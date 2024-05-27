@@ -19,7 +19,7 @@ clean:
 	rm -f $(OBJ) $(DBJ)
 
 fclean: clean
-	rm -f $(NAME)ß
+	rm -f $(NAME)
 
 re: fclean all
 

@@ -16,8 +16,11 @@ int main()
 	delete i;
 	const WrongAnimal *test = new WrongAnimal();
 	const WrongAnimal *cat = new WrongCat();
+	const WrongCat *cat2 = new WrongCat();
 	test->makeSound();
 	cat->makeSound();
+	cat2->makeSound();
+	delete cat2;
 	delete test;
 	delete cat;
 	return 0;
