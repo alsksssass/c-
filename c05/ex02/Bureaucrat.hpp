@@ -1,8 +1,8 @@
 #ifndef BUREAUCRAT_HPP
 #define BUREAUCRAT_HPP
 #include <iostream>
-#include "Form.hpp"
-class Form;
+#include "AForm.hpp"
+class AForm;
 
 class Bureaucrat {
 private:
@@ -25,7 +25,7 @@ public:
 	~Bureaucrat();
 	Bureaucrat(const Bureaucrat &a);
 	friend std::ostream& operator << (std::ostream &os, Bureaucrat &a);
-	void signForm(Form &a);
+	void signForm(AForm &a);
 	std::string getName() const;
 	int getGrade() const;
 	void decreaseGrade(int num);

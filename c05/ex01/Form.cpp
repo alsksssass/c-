@@ -25,14 +25,14 @@ bool Form::is_signed() const{
 	return Sign;
 }
 
-void Form::beSigned(Bureaucrat &a){
+void Form::beSigned(const Bureaucrat &a){
 	if(a.getGrade() > this->getRequired_grade())
 		throw Form::GradeTooLowException();
 	Sign = true;
 }
 
-std::ostream& Form::operator << (std::ostream &os){
-	os << "form name is :" << this->getName() << "is signed :" << (Sign == false ? "Not yet." : "Signed") << std::endl;
-	os << "Required_grade : " << this->getRequired_grade() << "Required_execute : " << this->getRequired_execute() << std::endl;
+std::ostream& operator << (std::ostream &os, Form &a){
+	os << "form name is :" << a.getName() << "is signed :" << (a.is_signed() == false ? "Not yet." : "Signed") << std::endl;
+	os << "Required_grade : " << a.getRequired_grade() << " Required_execute : " << a.getRequired_execute() << std::endl;
 	return os;
 }

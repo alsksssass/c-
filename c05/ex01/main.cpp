@@ -14,5 +14,11 @@ int main (){
 		std::cout << "error "<< e.what() << std::endl;
 	}
 	a.signForm(f);
+	std::cout << a << std::endl;
+	std::cout << f << std::endl;
+	a.increaseGrade(1);
+	a.signForm(f);
+	std::cout << a << std::endl;
+	std::cout << f << std::endl;
 
 }
