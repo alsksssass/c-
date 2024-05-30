@@ -36,24 +36,27 @@ std::ostream& operator << (std::ostream &os, AForm &a){
 	os << "Required_grade : " << a.getRequired_grade() << " Required_execute : " << a.getRequired_execute();
 	return os;
 }
-bool AForm::accessCheck(const Bureaucrat &a) const {
-		try{
-		if(this->is_signed() == false)
+bool AForm::accessCheck(const Bureaucrat &a) const
+{
+	try
+	{
+		if (this->is_signed() == false)
 			throw AForm::NotSignedException();
 	}
-	catch(std::exception &e)
+	catch (std::exception &e)
 	{
 		std::cout << this->getName() << " " << e.what() << std::endl;
 		return false;
 	}
-	try{
-	if(this->getRequired_execute() < a.getGrade())
-		throw AForm::GradeTooLowException();
+	try
+	{
+		if (this->getRequired_execute() < a.getGrade())
+			throw AForm::GradeTooLowException();
 	}
-	catch(std::exception &e){
+	catch (std::exception &e)
+	{
 		std::cout << a.getName() << "can't execute " << this->getName() << " cuz " << e.what() << std::endl;
 		return false;
 	}
-
 	return true;
 }

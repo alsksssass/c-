@@ -33,6 +33,6 @@ void Form::beSigned(const Bureaucrat &a){
 
 std::ostream& operator << (std::ostream &os, Form &a){
 	os << "form name is :" << a.getName() << "is signed :" << (a.is_signed() == false ? "Not yet." : "Signed") << std::endl;
-	os << "Required_grade : " << a.getRequired_grade() << " Required_execute : " << a.getRequired_execute() << std::endl;
+	os << "Required_grade : " << a.getRequired_grade() << " Required_execute : " << a.getRequired_execute();
 	return os;
 }

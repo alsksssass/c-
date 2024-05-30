@@ -12,16 +12,15 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm &a
 	}
 	return *this;
 }
-void RobotomyRequestForm::execute(Bureaucrat const &executor) const
-{
-	if (AForm::accessCheck(executor) == false)
+void RobotomyRequestForm::execute(Bureaucrat const & executor) const{
+	if(AForm::accessCheck(executor) == false)
 		return;
 	std::srand(std::time(0) + std::rand());
 	std::cout << "drilling noises!!" << std::endl;
-	if (std::rand() % 2 == 0)
-		std::cout << this->getTarget() << " robotomized successfully" << std::endl;
+	if(std::rand() %2 ==0)
+		std::cout << this->getTarget() << " robotomized successfully" <<std::endl;
 	else
-		std::cout << this->getTarget() << " robotomized failed" << std::endl;
+		std::cout << this->getTarget() << " robotomized failed" <<std::endl;
 }
 std::string RobotomyRequestForm::getTarget() const{
 	return target;
