@@ -8,28 +8,24 @@ private:
 	Bureaucrat();
 public:
 	class GradeTooHighException : public std::exception{
-		private: 
-			int num;
 		public:
-			GradeTooHighException(int _num) : num(_num) {}
-			virtual const char* what() const throw();
+			GradeTooHighException() {}
+			virtual const char* what() const throw() {return "can't increase grade as much as ";}
 	};
 	class GradeTooLowException : public std::exception{
-		private:
-			int num;
 		public:
-			GradeTooLowException(int _num) : num(_num) {}
-			virtual const char* what() const throw();
+			GradeTooLowException() {}
+			virtual const char* what() const throw() {return "can't decrease grade as much as ";}
 	};
-	Bureaucrat(std::string name);
+	Bureaucrat(const std::string name,const int _grade);
 	~Bureaucrat();
 	Bureaucrat(const Bureaucrat &a);
 	Bureaucrat &operator=(const Bureaucrat &a);
-	friend std::ostream& operator << (std::ostream &os, Bureaucrat &a);
-	std::string getName() const;
+	const std::string getName() const;
 	int getGrade() const;
 	void decreaseGrade(int num);
 	void increaseGrade(int num);
 };
 
+std::ostream& operator << (std::ostream &os, Bureaucrat &a);
 #endif // BUREAUCRAT_HPP

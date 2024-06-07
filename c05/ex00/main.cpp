@@ -1,7 +1,7 @@
 #include "Bureaucrat.hpp"
 
 int main (){
-	Bureaucrat a("sabyun");
+	Bureaucrat a("sabyun",150);
 	try{
 	a.decreaseGrade(0);
 	a.increaseGrade(10);
@@ -12,6 +12,13 @@ int main (){
 	}
 	catch(std::exception &e){
 		std::cout << "error "<< e.what() << std::endl;
+	}
+	try{
+		Bureaucrat b("enbyel",-1);
+	}
+	catch(std::exception &e)
+	{
+		std::cout << "error " << e.what() << std::endl;
 	}
 
 }

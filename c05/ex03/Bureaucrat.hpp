@@ -19,23 +19,18 @@ public:
 	class GradeTooLowException : public std::exception{
 		public:
 			GradeTooLowException(){}
-			virtual const char *what() const throw() { return "can't decrease grade as much as "; }
+			virtual const char* what() const throw() {return "can't decrease grade as much as ";}
 	};
-	class NullPtr : public std::exception{
-	public:
-		NullPtr() {}
-		virtual const char *waht() const throw() { return "Null accepted!"; }
-	};
-	Bureaucrat(std::string name);
+	Bureaucrat(const std::string name,const int _grade);
 	~Bureaucrat();
 	Bureaucrat(const Bureaucrat &a);
-	friend std::ostream& operator << (std::ostream &os, Bureaucrat &a);
 	void signForm(AForm &a);
-	std::string getName() const;
-	bool is_valid()const;
+	const std::string getName() const;
 	int getGrade() const;
-	void decreaseGrade(int num);
-	void increaseGrade(int num);
+	void decreaseGrade(const int num);
+	void increaseGrade(const int num);
+	void executeForm(AForm const & form);
 };
 
+std::ostream& operator << (std::ostream &os, Bureaucrat &a);
 #endif // BUREAUCRAT_HPP

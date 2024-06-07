@@ -1,8 +1,8 @@
 #include "Bureaucrat.hpp"
 
 int main (){
-	Bureaucrat a("sabyun");
-	Form f("need water",false,1,1);
+	Bureaucrat a("sabyun",150);
+	Form f("need water",1,1);
 	try{
 	a.decreaseGrade(0);
 	a.increaseGrade(10);
@@ -20,5 +20,12 @@ int main (){
 	a.signForm(f);
 	std::cout << a << std::endl;
 	std::cout << f << std::endl;
+	try{
+		Form f("need water",-1,1);
+	}
+	catch(std::exception &e)
+	{
+		std::cout << "error " << e.what() << std::endl;
+	}
 
 }

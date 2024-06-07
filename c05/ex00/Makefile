@@ -1,6 +1,6 @@
 NAME = a.out
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror 
 ADFLAG = -std=c++98
 DFLAG = -MMD -MP
 SRC = main.cpp Bureaucrat.cpp

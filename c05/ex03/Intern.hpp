@@ -16,10 +16,10 @@ public:
 	~Intern();
 	Intern(const Intern &a);
 	Intern &operator=(const Intern &a);
-	AForm* makeForm(std::string f_name, std::string _target);
-	AForm* ShrubberyClone(std::string _target);
-	AForm* RobotomyClone(std::string _target);
-	AForm* PresidentClone(std::string _target);
+	AForm* makeForm(const std::string f_name, const std::string _target);
+	AForm* ShrubberyClone(const std::string _target);
+	AForm* RobotomyClone(const std::string _target);
+	AForm* PresidentClone(const std::string _target);
 };
 
 #endif // INTERN_HPP

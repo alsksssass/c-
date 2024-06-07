@@ -1,7 +1,12 @@
 #include "Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat() : name("name") , grade(150){}
-Bureaucrat::Bureaucrat(std::string name) : name(name) , grade(150){}
+Bureaucrat::Bureaucrat(const std::string name,const int _grade) : name(name) , grade(_grade){
+	if(_grade < 1)
+		throw Bureaucrat::GradeTooHighException();
+	if(_grade > 150)
+		throw Bureaucrat::GradeTooLowException();
+}
 Bureaucrat::~Bureaucrat(){}
 Bureaucrat::Bureaucrat(const Bureaucrat &a) : name(a.getName()), grade(a.getGrade()){
 }
@@ -11,32 +16,22 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat &a) {
 		grade = a.getGrade();
 	return *this;
 }
-std::string Bureaucrat::getName() const{
+const std::string Bureaucrat::getName() const{
 	return name;
 }
 int Bureaucrat::getGrade() const{
 	return grade;
 }
-const char* Bureaucrat::GradeTooHighException::what() const throw(){
-	std::string a = "can't increase grade as much as " + std::to_string(num);
-	const char *ret = a.c_str();
-	return ret;
-}
-const char* Bureaucrat::GradeTooLowException::what() const throw(){
-	std::string a = "can't decrease grade as much as " + std::to_string(num);
-	const char *ret = a.c_str();
-	return ret;
-}
 
 void Bureaucrat::decreaseGrade(int num){
 	if(grade + num > 150)
-		throw Bureaucrat::GradeTooLowException(num);
+		throw Bureaucrat::GradeTooLowException();
 	grade+=num;
 	std::cout << "now " << name << "'s grade is " << grade << std::endl;
 }
 void Bureaucrat::increaseGrade(int num){
 	if(grade - num < 1)
-		throw Bureaucrat::GradeTooHighException(num);
+		throw Bureaucrat::GradeTooHighException();
 	grade-=num;
 	std::cout << "now " << name << "'s grade is " << grade << std::endl;
 }

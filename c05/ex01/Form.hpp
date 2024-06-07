@@ -9,8 +9,8 @@ class Form {
 private:
 	const std::string Name;	
 	bool Sign;
-	int Required_grade;
-	int Required_execute;
+	const int Required_grade;
+	const int Required_execute;
 	Form();
 	Form &operator=(const Form &a);
 public:
@@ -25,15 +25,15 @@ public:
 		virtual const char* what() const throw(){return "this grade is too Low to do ";}
 
 	};
-	Form(std::string _Name,bool _Sign, int _Required_grade, int _required_execute);
+	Form(const std::string _Name,const int _Required_grade,const int _required_execute);
 	~Form();
 	Form(const Form &a);
-	friend std::ostream& operator << (std::ostream &os, Form &a);
 	void beSigned(const Bureaucrat &a);
 	int getRequired_grade() const;
 	int getRequired_execute() const;
-	std::string getName() const;
+	const std::string getName() const;
 	bool is_signed() const;
 };
 
+std::ostream& operator << (std::ostream &os, Form &a);
 #endif // FORM_HPP

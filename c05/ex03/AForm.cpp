@@ -1,9 +1,14 @@
 #include "AForm.hpp"
 
 AForm::AForm() : Name("name"), Sign(false), Required_grade(150), Required_execute(150) {}
-AForm::AForm(std::string _Name,int _Required_grade, int _required_execute) : 
-Name(_Name) , Sign(false), Required_grade(_Required_grade), Required_execute(_required_execute)
-{}
+AForm::AForm(const std::string _Name,const int _Required_grade,const int _Required_execute) : 
+Name(_Name) , Sign(false), Required_grade(_Required_grade), Required_execute(_Required_execute)
+{
+	if(_Required_grade < 1 || _Required_execute < 1)
+		throw AForm::GradeTooHighException();
+	if(_Required_grade > 150 || _Required_execute > 150)
+		throw AForm::GradeTooLowException();
+}
 AForm::~AForm(){}
 AForm::AForm(const AForm &a) : 
 Name(a.getName()) , Sign(a.is_signed()), Required_grade(a.getRequired_grade()), Required_execute(a.getRequired_execute()) 
@@ -18,7 +23,7 @@ int AForm::getRequired_grade() const{
 int AForm::getRequired_execute() const{
 	return Required_execute;
 }
-std::string AForm::getName() const{
+const std::string AForm::getName() const{
 	return Name;
 }
 bool AForm::is_signed() const{

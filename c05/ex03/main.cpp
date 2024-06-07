@@ -1,18 +1,24 @@
 #include "Bureaucrat.hpp"
 #include "Intern.hpp"
-// void la (){system("leaks a.out");}
+//void la (){system("leaks sabyun.out");}
 int main (){
     Intern someRandomIntern;
-	Bureaucrat a("sabyun");
-	a.increaseGrade(140);
+	Bureaucrat sabyun("sabyun",150);
+	sabyun.increaseGrade(140);
     AForm* rrf;
     rrf = someRandomIntern.makeForm("robotomy request", "Bender");
 	std::cout << *rrf << std::endl;	
-	a.signForm(*rrf);
-	rrf->execute(a);
+	sabyun.signForm(*rrf);
+	sabyun.executeForm(*rrf);
 	delete rrf;
-    rrf = someRandomIntern.makeForm("nono", "sabyun");
+	try{
+		rrf = someRandomIntern.makeForm("nono", "sabyun");
+	}
+	catch(std::exception &e)
+	{
+		std::cout << "error " << e.what() << std::endl;
+	}
     rrf = someRandomIntern.makeForm("shrubbery creation", "enbyel");
 	delete rrf;
-	// std::atexit(la);
+	//std::atexit(la);
 }

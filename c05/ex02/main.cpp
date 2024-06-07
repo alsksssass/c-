@@ -4,40 +4,40 @@
 #include "PresidentialPardonForm.hpp"
 
 int main (){
-	Bureaucrat a("sabyun");
-	ShrubberyCreationForm *b = new ShrubberyCreationForm("home");
-	AForm *d = new ShrubberyCreationForm("cafe");
-	AForm *e = new RobotomyRequestForm("sabyun");
-	AForm *f = new PresidentialPardonForm("chansjeo");
+	Bureaucrat sabyun("sabyun",150);
+	AForm *sigined_test = new ShrubberyCreationForm("home");
+	AForm *no_sigined_test = new ShrubberyCreationForm("cafe");
+	AForm *robo = new RobotomyRequestForm("sabyun");
+	AForm *president = new PresidentialPardonForm("chansjeo");
 	
-	a.decreaseGrade(0);
-	a.increaseGrade(10);
-	a.increaseGrade(150);
-	a.decreaseGrade(150);
-	std::cout << a << std::endl;
-	b->execute(a);
-	a.signForm(*b);
-	b->execute(a);
-	a.increaseGrade(138);
-	b->execute(a);
-	d->execute(a);
-	a.signForm(*e);
-	e->execute(a);
-	e->execute(a);
-	e->execute(a);
-	e->execute(a);
-	e->execute(a);
-	a.decreaseGrade(100);
-	e->execute(a);
-	a.signForm(*f);
-	f->execute(a);
-	a.increaseGrade(100);
-	a.signForm(*f);
-	f->execute(a);
+	sabyun.decreaseGrade(0);
+	sabyun.increaseGrade(10);
+	sabyun.increaseGrade(150);
+	sabyun.decreaseGrade(150);
+	std::cout << sabyun << std::endl;
+	sabyun.executeForm(*sigined_test);
+	sabyun.signForm(*sigined_test);
+	sabyun.executeForm(*sigined_test);
+	sabyun.increaseGrade(138);
+	sabyun.executeForm(*sigined_test);
+	sabyun.executeForm(*no_sigined_test);
+	sabyun.signForm(*robo);
+	sabyun.executeForm(*robo);
+	sabyun.executeForm(*robo);
+	sabyun.executeForm(*robo);
+	sabyun.executeForm(*robo);
+	sabyun.executeForm(*robo);
+	sabyun.decreaseGrade(100);
+	sabyun.executeForm(*robo);
+	sabyun.signForm(*president);
+	sabyun.executeForm(*president);
+	sabyun.increaseGrade(100);
+	sabyun.signForm(*president);
+	sabyun.executeForm(*president);
 
-	delete b;
-	delete d;
-	delete e;
-	delete f;
+	delete sigined_test;
+	delete no_sigined_test;
+	delete robo;
+	delete president;
 
 }

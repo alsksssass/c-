@@ -21,15 +21,15 @@ public:
 			GradeTooLowException(){}
 			virtual const char* what() const throw() {return "can't decrease grade as much as ";}
 	};
-	Bureaucrat(std::string name);
+	Bureaucrat(const std::string name, const int _grade);
 	~Bureaucrat();
 	Bureaucrat(const Bureaucrat &a);
-	friend std::ostream& operator << (std::ostream &os, Bureaucrat &a);
 	void signForm(Form &a);
-	std::string getName() const;
+	const std::string getName() const;
 	int getGrade() const;
-	void decreaseGrade(int num);
-	void increaseGrade(int num);
+	void decreaseGrade(const int num);
+	void increaseGrade(const int num);
 };
 
+std::ostream& operator << (std::ostream &os, Bureaucrat &a);
 #endif // BUREAUCRAT_HPP

@@ -43,11 +43,11 @@ public:
 			FileOpenFail(){}
 			virtual const char * what() const throw(){return "File create error!!";}
 	};
-	ShrubberyCreationForm(std::string _target);
+	ShrubberyCreationForm(const std::string _target);
 	~ShrubberyCreationForm();
 	ShrubberyCreationForm(const ShrubberyCreationForm &a);
 	virtual void execute(Bureaucrat const & executor) const;
-	std::string getTarget() const;
+	const std::string getTarget() const;
 };
 
 #endif // SHRUBBERYCREATIONFORM_HPP

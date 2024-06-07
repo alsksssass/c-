@@ -3,7 +3,7 @@
 #include <sstream>
 
 ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm",145,137) , target("NONE"){}// sign 145, exec 137
-ShrubberyCreationForm::ShrubberyCreationForm(std::string _target) : AForm("ShrubberyCreationForm",145,137) , target(_target){}
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string _target) : AForm("ShrubberyCreationForm",145,137) , target(_target){}
 ShrubberyCreationForm::~ShrubberyCreationForm(){}
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &a) : AForm(a), target(a.getTarget()){}
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm &a){
@@ -11,13 +11,13 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 		target = a.getTarget();
 	return *this;
 }
-std::string ShrubberyCreationForm::getTarget() const{
+const std::string ShrubberyCreationForm::getTarget() const{
 	return target;
 }
 void ShrubberyCreationForm::execute(Bureaucrat const & executor) const{
-	std::ofstream wfile;
-	if(AForm::accessCheck(executor) == false)
+	if(accessCheck(executor) == false)
 		return;
+	std::ofstream wfile;
 	std::string out_name = this->getTarget() + "_shrubbery";
 	try{
 		wfile.open(out_name.c_str(),std::ios::out | std::ios::trunc);
@@ -27,9 +27,10 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const{
 	catch(std::exception &e)
 	{
 		std::cout << e.what() <<std::endl;
+		return;
 	}
+	std::cout << executor.getName() <<  " executed "  << this->getName() << std::endl;
 	std::string tree = TREE;
     wfile << tree;
 	wfile.close();
-	std::cout << executor.getName() <<" executes " << this->getName() <<std::endl;
 }
