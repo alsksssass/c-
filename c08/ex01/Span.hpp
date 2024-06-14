@@ -16,8 +16,13 @@ class Span {
 	~Span();
 	Span(Span const &a);
 	Span& operator=(Span const &a);
-	void addNumber(const int a);
-	void rangeAdd();
+	template<typename iterator>
+	void rangeAdd(iterator st, iterator ed){
+		if(st == ed)	return;
+		for(iterator it = st; it !=ed; it++)
+			addNumber(*it);
+	}
+	void addNumber(const int);
 	long long shortestSpan() const;
 	long long longestSpan() const;
 };

@@ -39,8 +39,10 @@ int main() {
     } catch (const std::exception &e) {
         std::cerr << e.what() << std::endl;
     }
-    Span test(50);
-    test.rangeAdd();
+    int iarr[5] = {1,2,3,4};
+    const std::vector<int> const_int_arr(iarr,iarr+5);
+    Span test(5);
+    test.rangeAdd(const_int_arr.begin(),const_int_arr.end());
     std::cout << "Longest Span: " << test.longestSpan() << std::endl;
     std::cout << "Shortest Span: " << test.shortestSpan() << std::endl;
     

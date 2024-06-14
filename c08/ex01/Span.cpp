@@ -27,18 +27,6 @@ void Span::addNumber(const int a){
 	cnt++;
 }
 
-void Span::rangeAdd(){
-		std::srand(std::clock());
-		for(unsigned int i = this->cnt; i < this->idx; i++)
-		{
-			int rand_int = std::rand() % (10000 +1);
-			while(std::find(arr.begin(),arr.end(),rand_int) != arr.end())
-				rand_int = std::rand() % (10000 +1);
-			arr.push_back(rand_int);
-			cnt = i;
-		}
-	}
-
 long long Span::shortestSpan() const{
 	if(cnt < 2)
 		throw std::range_error("range_error");
