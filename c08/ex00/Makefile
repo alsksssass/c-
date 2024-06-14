@@ -1,19 +1,19 @@
 NAME = a.out
-CC = c++
-CFLAGS = -Wall -Wextra -Werror
+CXX = c++
+CXXFLAGS = -Wall -Wextra -Werror
 ADFLAG = -std=c++98
 DFLAG = -MMD -MP
-SRC = main.cpp ScalarConverter.cpp 
+SRC = main.cpp
 OBJ = $(SRC:.cpp=.o)
 DBJ = $(SRC:.cpp=.d)
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(DFLAG) $(ADFLAG) $(OBJ) -o $(NAME)
+	$(CXX) $(CXXFLAGS) $(DFLAG) $(ADFLAG) $(OBJ) -o $(NAME)
 
 %.o: %.cpp
-	$(CC) $(CFLAGS) $(ADFLAG) $(DFLAG) -c $< -o $@
+	$(CXX) $(CXXFLAGS) $(ADFLAG) $(DFLAG) -c $< -o $@
 
 clean:
 	rm -f $(OBJ) $(DBJ)

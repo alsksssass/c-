@@ -1,6 +1,6 @@
 NAME = a.out
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror 
 ADFLAG = -std=c++98
 DFLAG = -MMD -MP
 SRC = main.cpp

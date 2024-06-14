@@ -9,6 +9,7 @@ Fixed::Fixed(const int num){
 Fixed::Fixed(const float num){ 
 	std::cout << "Float constructor called" << std::endl;
 	fix_point = roundf(num * (1<< bit));}
+	
 
 Fixed::Fixed(const Fixed &s){
 	std::cout << "Copy constructor called" << std::endl;

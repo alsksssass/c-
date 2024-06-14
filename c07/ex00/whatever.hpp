@@ -1,5 +1,6 @@
 #pragma once
 
+// #include<iostream>
 template <typename T>
 void swap (T &a, T &b){
 	T temp = a;
@@ -17,3 +18,16 @@ template <typename T>
 T max(T &a, T &b){
 	return (a > b) ? a :b;
 };
+
+// template <typename T>
+// const T min(T const &a, T const &b)
+// {
+// 	std::cout << "const //" <<std::endl;
+// 	return (a < b) ? a : b;
+// };
+
+// template <typename T>
+// const T max(T const &a, T const &b){
+// 	std::cout << "const //" <<std::endl;
+// 	return (a > b) ? a :b;
+// };

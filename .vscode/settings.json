@@ -130,6 +130,11 @@
     "execution": "cpp",
     "variant": "cpp",
     "numeric": "cpp",
-    "random": "cpp"
+    "random": "cpp",
+    "list": "cpp",
+    "span": "cpp",
+    "__tree": "cpp",
+    "set": "cpp",
+    "map": "cpp"
   }
 }
