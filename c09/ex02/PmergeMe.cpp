@@ -66,13 +66,13 @@ std::vector<std::pair<int, int> > PmergeMe::req(std::vector<std::pair<int, int> 
 		temp.push_back(small_num[lage_num[i].second / n_pow]);
 	if (arr.size() % 2)
 		temp.push_back(small_num[small_num.size() - 1]);
-	std::cout << "temp list " << std::endl;
-	for (unsigned int i = 0; i < temp.size(); i++)
-		std::cout << temp[i].first << std::endl;
+	// std::cout << "temp list " << std::endl;
+	// for (unsigned int i = 0; i < temp.size(); i++)
+	// 	std::cout << temp[i].first << std::endl;
 
-	std::cout << "lage list " << std::endl;
-	for (unsigned int i = 0; i < lage_num.size(); i++)
-		std::cout << lage_num[i].first << std::endl;
+	// std::cout << "lage list " << std::endl;
+	// for (unsigned int i = 0; i < lage_num.size(); i++)
+	// 	std::cout << lage_num[i].first << std::endl;
 	int k = 0;
 	for (int i = 1; i < 19; i++)
 	{
@@ -84,8 +84,9 @@ std::vector<std::pair<int, int> > PmergeMe::req(std::vector<std::pair<int, int> 
 			{
 				if (j - 1 == (int)temp.size() - 1)
 				{
-					std::vector<std::pair<int, int>>::iterator it;
-					it = std::lower_bound(lage_num.begin(), lage_num.end(), temp[j - 1]);
+					std::vector<std::pair<int, int> >::iterator it;
+					// it = std::lower_bound(lage_num.begin(), lage_num.end(), temp[j - 1]);
+					it = lage_num.begin() + PmergeMe::lower_bound(lage_num,temp[j - 1].first,0,lage_num.size());
 					lage_num.insert(it, temp[j - 1]);
 				}
 				continue;
@@ -93,8 +94,9 @@ std::vector<std::pair<int, int> > PmergeMe::req(std::vector<std::pair<int, int> 
 			unsigned int insert_index = (unsigned int)(j - 1);
 			if (insert_index > temp.size() - 1)
 				continue;
-			std::vector<std::pair<int, int>>::iterator it;
-			it = std::lower_bound(lage_num.begin(), lage_num.begin() + j + k, temp[insert_index]);
+			std::vector<std::pair<int, int> >::iterator it;
+			// it = std::lower_bound(lage_num.begin(), lage_num.begin() + j + k, temp[insert_index]);
+			it = lage_num.begin() + PmergeMe::lower_bound(lage_num,temp[insert_index].first ,0 , j+k);
 			lage_num.insert(it, temp[insert_index]);
 			k++;
 		}
@@ -102,4 +104,31 @@ std::vector<std::pair<int, int> > PmergeMe::req(std::vector<std::pair<int, int> 
 			break;
 	}
 	return lage_num;
+}
+typedef std::vector<std::pair<int, int> > vec_pair;
+typedef std::vector<std::pair<int, int> >::iterator it;
+int PmergeMe::lower_bound(vec_pair &arr, int t, int low, int high)
+{
+    while (low < high) {
+        int mid = low + (high - low) / 2;
+        if (arr[mid].first< t)
+            low = mid + 1;
+        else
+            high = mid;
+    }
+    return low;
+}
+
+void PmergeMe::test(std::vector<std::pair<int, int> > &temp)
+{
+	int x = 6;
+	std::vector<std::pair<int, int> >::iterator it;
+	// it = std::lower_bound(lage_num.begin(), lage_num.end(), temp[j - 1]);
+	int pos = PmergeMe::lower_bound(temp,x,0,temp.size()-1);
+	std::cout << temp[pos].first <<  "pos = " << pos <<std::endl;
+	temp.insert(temp.begin() + pos,std::make_pair(x,0));
+	for(unsigned int i = 0; i < temp.size(); i++)
+	{
+		std::cout << temp[i].first << std::endl;
+	}
 }

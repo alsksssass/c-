@@ -11,9 +11,9 @@ int main(int argc, char **argv)
 	if(temp.size() < 1)
 		return 0;
 	for(unsigned int i = 0; i < temp.size(); i++)
-	{
 		std::cout << temp[i].first << " " << temp[i].second << std::endl;
-	}
+	// p.test(temp);
+	// return 0;
 	double  st = PmergeMe::c_time();	
 	std::vector<std::pair<int,int> > ret = p.req(temp,1);
 	double  ed = PmergeMe::c_time();
