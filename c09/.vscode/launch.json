@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": ["4", "1", "3", "5", "7", "9", "2", "9", "9"],
+      "cwd": "/Users/sabyun/42/c++/c09/ex02",
+      "program": "/Users/sabyun/42/c++/c09/ex02/a.out"
+    }
+  ]
+}

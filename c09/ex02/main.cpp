@@ -7,12 +7,15 @@ int main(int argc, char **argv)
 	PmergeMe p;
 	std::vector<std::pair<int,int> > temp;
 	std::vector<int> a = p.make_temp(argc,argv);
+	std::cout << "before sort = ";
+	for(unsigned int i = 0; i < a.size(); i++)
+		std::cout << a[i] << " ";
 	p.make_pair_index(argc,a);
 	vec_pair vec_temp = p.get_vec();
 	double  st = PmergeMe::c_time();
 	vec_pair ret_vec = p.req(vec_temp,1);
 	double  ed = PmergeMe::c_time();
-	std::cout << "sorted vector arr = ";
+	std::cout <<std::endl << "sorted vector arr = ";
 	for(unsigned int i = 0; i < ret_vec.size(); i++)
 		std::cout << ret_vec[i].first << " ";
 	
