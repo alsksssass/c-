@@ -7,30 +7,35 @@ int main(int argc, char **argv)
 	PmergeMe p;
 	std::vector<std::pair<int,int> > temp;
 	std::vector<int> a = p.make_temp(argc,argv);
-	temp = p.make_pair_index(argc,a);
-	if(temp.size() < 1)
-		return 0;
-	for(unsigned int i = 0; i < temp.size(); i++)
-		std::cout << temp[i].first << " " << temp[i].second << std::endl;
-	// p.test(temp);
-	// return 0;
-	double  st = PmergeMe::c_time();	
-	std::vector<std::pair<int,int> > ret = p.req(temp,1);
+	p.make_pair_index(argc,a);
+	vec_pair vec_temp = p.get_vec();
+	double  st = PmergeMe::c_time();
+	vec_pair ret_vec = p.req(vec_temp,1);
 	double  ed = PmergeMe::c_time();
-	std::cout << "time = " << std::fixed << std::setprecision(5) <<  (ed - st)<< std::endl;
+	std::cout << "sorted vector arr = ";
+	for(unsigned int i = 0; i < ret_vec.size(); i++)
+		std::cout << ret_vec[i].first << " ";
+	
+	std::cout << std::endl << "time = " << std::fixed << std::setprecision(5) <<  (ed - st) << " us"<< std::endl;
+
+	dec_pair dec_temp = p.get_dec();
+	st = PmergeMe::c_time();
+	dec_pair ret_dec = p.req(dec_temp,1);
+	ed = PmergeMe::c_time();
+	std::cout << "sorted decque arr = ";
+	for(unsigned int i = 0; i < ret_dec.size(); i++)
+		std::cout << ret_dec[i].first << " ";
+	
+	std::cout << std::endl << "time = " << std::fixed << std::setprecision(5) <<  (ed - st)<< " us" << std::endl;
+
+
 	std::sort(a.begin(),a.end());
 	std::cout <<std::endl << "result  == " << std::endl;
-	for(unsigned int i = 0; i < ret.size(); i++)
+	for(unsigned int i = 0; i < ret_dec.size(); i++)
 	{
-		if(ret[i].first != a[i])
+		if(ret_dec[i].first != a[i] ||  ret_vec[i].first != a[i])
 		{
-			std::cout << "idx i = " << i << "ret = " << ret[i].first << " a[i] " << a[i] << std::endl;
 			std::cout << "not sorted !!" << std::endl;
-			for(unsigned int i = 0; i < ret.size(); i++)
-			{
-				// std::cout << "idx i = " << i << "ret = " << ret[i].first << " a[i] " << a[i] << std::endl; 
-				std::cout << "idx i = " << i << "ret = " << ret[i].first << std::endl; 
-			}
 			break;
 		}
 	}
