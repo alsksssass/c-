@@ -7,8 +7,6 @@ int main(int argc, char **argv)
 	PmergeMe p;
 	std::vector<std::pair<int,int> > temp;
 	std::vector<int> a = p.make_temp(argc,argv);
-	for(unsigned int i = 0; i < a.size(); i++)
-		std::cout << a[i] << std::endl;
 	temp = p.make_pair_index(argc,a);
 	if(temp.size() < 1)
 		return 0;

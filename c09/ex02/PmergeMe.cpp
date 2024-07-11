@@ -69,9 +69,8 @@ std::vector<std::pair<int, int> > PmergeMe::req(std::vector<std::pair<int, int> 
 		temp.push_back(small_num[lage_num[i].second / n_pow]);
 	if(arr.size()%2)
 		temp.push_back(small_num[small_num.size()-1]);
-	// small_num = temp;
 	int k =0;
-    for (int i = 1; i < 18 || (int)(temp.size()) > (int)find_ya(i); i++) {
+    for (int i = 1; i < 19; i++) {
         long long ya_curr = std::min((int)find_ya(i),(int)lage_num.size());
         long long ya_prev = find_ya(i - 1);
         for (long long j = ya_curr; j > ya_prev; j--) {
@@ -88,6 +87,8 @@ std::vector<std::pair<int, int> > PmergeMe::req(std::vector<std::pair<int, int> 
 			// 	std::cout << lage_num[i].first << std::endl;
 			k++;
         }
+		if((int)(temp.size()) < (int)find_ya(i))
+			break;
 	}
 	if (arr.size() % 2)
 	{
