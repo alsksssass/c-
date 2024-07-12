@@ -8,7 +8,7 @@ bool operator_check(int a)
 	return false;
 }
 
-int calcule(int a, int b, int c)
+long calcule(long a, long b, int c)
 {
 	if(c == '+')
 		return a + b;
@@ -23,9 +23,7 @@ int calcule(int a, int b, int c)
 		return  a / b;
 	}
 	else
-		{
-			throw std::invalid_argument("Error : calculator");
-		}
+		throw std::invalid_argument("Error : calculator");
 }
 void RPN::push(std::string &a){
 	for(int i = 0; i < (int)a.size(); i++)
@@ -33,19 +31,19 @@ void RPN::push(std::string &a){
 		if(a[i] == ' ')
 			continue;
 		if(std::isdigit(a[i]) == false && operator_check(a[i]) == false)
-			throw std::invalid_argument("Error syntax");
+			throw std::invalid_argument("Error syntax digit");
 		if(operator_check(a[i]) == true)
 		{
 			if(st.size() < 2)
-				throw std::invalid_argument("Error syntax");
-			int c = st.top(); st.pop();
-			int b = st.top(); st.pop();
+				throw std::invalid_argument("Error syntax argument");
+			long c = st.top(); st.pop();
+			long b = st.top(); st.pop();
 			st.push(calcule(b,c,a[i]));
 		}
 		else
 			st.push(a[i] - '0');
 	}
 	if(st.size()!= 1)
-		throw std::invalid_argument("Error syntax");
+		throw std::invalid_argument("Error syntax size");
 	std::cout << st.top() << std::endl;
 }

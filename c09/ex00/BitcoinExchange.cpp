@@ -47,7 +47,7 @@ void BitcoinExchange::getbase(const std::string &database_name){
 	std::string path = "./" + database_name;
 	std::ifstream file(path.c_str());
 	if(!file.is_open())
-		throw std::invalid_argument("file_open_error");
+		throw std::invalid_argument(" database file_open_error");
 	
 	std::string data;
 	while(1)
@@ -55,16 +55,16 @@ void BitcoinExchange::getbase(const std::string &database_name){
 		getline(file,data);
 		if(data.empty())
 			break;
-		if(data == "date | value")
+		if(data == "date,exchange_rate")
 			continue;
 		if(data.size() < 11 || data.find(',') == std::string::npos || data.find(',') != 10)
-			std::invalid_argument("error : database");
+			throw std::invalid_argument("database invalid argument");
 		std::string date = data.substr(0,10);
 		std::string value = data.substr(11);
 		char *ptr = 0;
 		double price = strtod(value.c_str(),&ptr);
 		if(date_check(date) == false || *ptr != 0)
-			std::invalid_argument("error : database");
+			throw std::invalid_argument("database invalid date ");
 		sdata.insert(std::make_pair(date,price));
 	}
 }
@@ -89,7 +89,7 @@ void BitcoinExchange::getinput(const std::string &database_name){
 	std::string path = "./" + database_name;
 	std::ifstream file(path.c_str());
 	if(!file.is_open())
-		throw std::invalid_argument("file_open_error");
+		throw std::invalid_argument(" input file_open_error");
 	
 	std::string data;
 	while(1)

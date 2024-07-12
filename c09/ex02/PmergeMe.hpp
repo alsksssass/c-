@@ -22,7 +22,6 @@ class PmergeMe{
 	public:
 		PmergeMe();
 		~PmergeMe();
-		void time_stamp() const;
 		std::vector<int> make_temp(int argc, char **argv);
 		void make_pair_index(int argc, std::vector<int> &arr);
 		vec_pair req(vec_pair &arr,int n);		
@@ -30,7 +29,6 @@ class PmergeMe{
 		int lower_bound(vec_pair &arr, int t, int low , int high);
 		int lower_bound(dec_pair &arr, int t, int low , int high);
 		static double c_time(void);
-		void test(std::vector<std::pair<int, int> > &temp);
 		vec_pair get_vec();
 		dec_pair get_dec();
 		

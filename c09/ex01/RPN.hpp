@@ -5,7 +5,7 @@
 #include <exception>
 class RPN {
 	private:
-		std::stack <int> st;
+		std::stack <long> st;
 		RPN(RPN const &a);
 		RPN &operator=(RPN const &a);
 	public:
